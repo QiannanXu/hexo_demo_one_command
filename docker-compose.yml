@@ -1,0 +1,20 @@
+
+version: "3"
+
+services:
+   qnxu_blog:
+     image: registry.cherryland.cn/hexo_demo_blog:latest
+     ports:
+       - 4000:4000
+     restart: always
+     container_name: hexo_demo_blog
+     environment:
+       VIRTUAL_PORT: 443
+       VIRTUAL_HOST: cherryland.cn
+     volumes:
+       - /root/certs:/etc/nginx/certs
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
